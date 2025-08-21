@@ -21,9 +21,15 @@ pylons.forEach((mapping1) => {
     let distanceX = pytho2[0] - pytho1[0];
     let distanceY = pytho2[1] - pytho1[1];
     console.log(Math.hypot(distanceX, distanceY));
-    if (Math.hypot(distanceX, distanceY) <= 1.5) {
-      for (let i = 0; i < 100; i++) {}
+    if (
+      (Math.hypot(distanceX, distanceY) <= 1.5 &&
+        mapping1.name !== mapping2.name) ||
+      mapping2.name !== mapping1.name
+    ) {
+      //want to seperate if it's the same letter to not factor it in
+
       // console.log(mapping1.name, mapping2.name, "great success");
+
       connections.push({ pylon1: mapping1.name, pylon2: mapping2.name });
 
       console.log("Great success", connections.length);
