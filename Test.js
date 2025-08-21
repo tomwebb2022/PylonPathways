@@ -4,7 +4,6 @@ Come up with a plan to determine which masts can be within range of a another ma
 */
 
 const pylons = [
-  //data given to me
   { name: "A", coordinates: [0, 0] },
   { name: "B", coordinates: [1, 1] },
   { name: "C", coordinates: [2, 2] },
@@ -12,7 +11,9 @@ const pylons = [
   { name: "E", coordinates: [4, 0] },
   { name: "F", coordinates: [5, 0] },
 ];
-let connections = [];
+//console log should print "Successful connections (num), pairs of unsuccessful connections"
+let connections = []; //saves these in an array to stop a massive list
+
 pylons.forEach((mapping1) => {
   pylons.forEach((mapping2) => {
     let pytho1 = mapping1.coordinates;
@@ -20,13 +21,13 @@ pylons.forEach((mapping1) => {
     let distanceX = pytho2[0] - pytho1[0];
     let distanceY = pytho2[1] - pytho1[1];
     console.log(Math.hypot(distanceX, distanceY));
-
     if (Math.hypot(distanceX, distanceY) <= 1.5) {
-      console.log(mapping1.name, mapping2.name, "great success");
+      for (let i = 0; i < 100; i++) {}
+      // console.log(mapping1.name, mapping2.name, "great success");
       connections.push({ pylon1: mapping1.name, pylon2: mapping2.name });
-      console.log(connections);
+
+      console.log("Great success", connections.length);
+      console.log("Not great success", connections);
     }
-    // console.log("mapping1", mapping1);
-    // console.log("mapping2", mapping2);
   });
 });
