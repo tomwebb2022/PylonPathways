@@ -11,29 +11,27 @@ const pylons = [
   { name: "E", coordinates: [4, 0] },
   { name: "F", coordinates: [5, 0] },
 ];
-//console log should print "Successful connections (num), pairs of unsuccessful connections"
 let connections = []; //saves these in an array to stop a massive list
 
-pylons.forEach((mapping1) => {
-  pylons.forEach((mapping2) => {
+pylons.forEach((mapping1, i) => {
+  pylons.forEach((mapping2, j) => {
+    if (j <= i) return; //prevent AB and BA repeats on the console
     let pytho1 = mapping1.coordinates;
     let pytho2 = mapping2.coordinates;
     let distanceX = pytho2[0] - pytho1[0];
     let distanceY = pytho2[1] - pytho1[1];
-    console.log(Math.hypot(distanceX, distanceY));
+
     if (
-      (Math.hypot(distanceX, distanceY) <= 1.5 &&
-        mapping1.name !== mapping2.name) ||
-      mapping2.name !== mapping1.name
+      Math.hypot(distanceX, distanceY) <= 1.5 &&
+      mapping1.name !== mapping2.name
     ) {
-      //want to seperate if it's the same letter to not factor it in
-
-      // console.log(mapping1.name, mapping2.name, "great success");
-
-      connections.push({ pylon1: mapping1.name, pylon2: mapping2.name });
-
-      console.log("Great success", connections.length);
-      console.log("Not great success", connections);
+      //if statement
+      console.log({ pylon1: mapping1.name, pylon2: mapping2.name }, "Success");
+    } else {
+      console.log(
+        { pylon1: mapping1.name, pylon2: mapping2.name },
+        "Unsuccessful"
+      );
     }
   });
 });
