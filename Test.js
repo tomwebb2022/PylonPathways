@@ -11,7 +11,6 @@ const pylons = [
   { name: "E", coordinates: [4, 0] },
   { name: "F", coordinates: [5, 0] },
 ];
-let connections = []; //saves these in an array to stop a massive list
 
 pylons.forEach((mapping1, i) => {
   pylons.forEach((mapping2, j) => {
@@ -25,7 +24,6 @@ pylons.forEach((mapping1, i) => {
       Math.hypot(distanceX, distanceY) <= 1.5 &&
       mapping1.name !== mapping2.name
     ) {
-      //if statement
       console.log({ pylon1: mapping1.name, pylon2: mapping2.name }, "Success");
     } else {
       console.log(
@@ -33,5 +31,6 @@ pylons.forEach((mapping1, i) => {
         "Unsuccessful"
       );
     }
+    // next task, if the connection is unsuccessful then it will check the connection before to see if that was successful
   });
 });
